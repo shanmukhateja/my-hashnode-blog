@@ -4,13 +4,13 @@ Hello,
 
 I'd recently implemented "Goto Line" feature on my side project, MyStudio IDE and here's how I did it.
 
-**Background:**
+## Background:
 
 As a part of building essential features for an IDE, "Goto Line" seemed like an easy milestone. 
 
 There may be other ways to accomplish this but here's how I did it.
 
-**UI Goals:**
+## UI Goals:
 
 1. Show a UI widget, "Line X, Column Y" to the bottom-right on the application's status bar.
 
@@ -24,23 +24,23 @@ There may be other ways to accomplish this but here's how I did it.
 
 5. It should also respond to keyboard shortcut `Ctrl+G` when request is valid.
 
-**UI Design:**
+## UI Design:
 
-__Indicator UI:__
+### Indicator UI:
 
 ![goto_line_wireframe2.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1654333252333/2ZqyS7nj9.png align="center")
 
-__Dialog:__
+### Dialog:
 
 ![goto_line_dialog_wireframe2.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1654333688885/_YkrZcFj-.png align="center")
 
-**Implementation:**
+## Implementation:
 
 I looked at [gedit](https://wiki.gnome.org/Apps/Gedit) and [KWrite](https://apps.kde.org/kwrite/)  and decided to use `GtkButton` as the line indicator widget instead of `GtkLabel`. 
 
 We start by initializing status bar UI and storing references to button and input field of dialog from `main_window.ui` (Glade resource file) from `Builder` object.
 
-**Feature 1: Changes to cursor position should update line indicator**
+### Feature 1: Changes to cursor position should update line indicator
 
 `TextBuffer` of `GtkSourceView` instance (text editor widget) has a `connect_cursor_position_notify` callback, also called a 'signal' in GTK terminlogy.
 
@@ -51,7 +51,7 @@ I wrote [fetch_line_number_by_buffer](https://github.com/shanmukhateja/mystudio-
 With this info, we call the [update]() function that does some sanity checks before updating the UI widget. 
 > TextBuffer returns a zero-based number for the line numbers which is why we need to adjust the values as required before updating the indicator. 
 
-**Feature 2: Jump to given line number & update indicator**
+### Feature 2: Jump to given line number & update indicator
 
 
 Just like before, we need access to `TextBuffer` to change the cursor's position for a given text editor instance.
@@ -66,7 +66,7 @@ Later, we set the column number (after decrement by 1, ofcourse!) to this `TextI
 
 > We don't have to validate the user input here as this is handled by text editor instance. For example, if user provides a line number greater than total lines of an open file, it will simply go to the last line.
 
-**End Result: **
+## End Result:
 ![ss_line_1.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1655490507949/r1VUTjIAU.png align="center")
 
 ![ss_goto_dialog.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1655490631187/v07HVvytL.png align="center")
