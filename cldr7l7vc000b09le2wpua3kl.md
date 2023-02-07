@@ -95,7 +95,7 @@ I've been migrating public functions inside each file with a `struct` for cleane
 
 In my opinion, this makes the code more Rust-like and follows the best practices of the Rust language.
 
-### What's Next?
+## What's Next?
 
 Here are a few things I'd like to see in the future in no specific order:
 
@@ -110,7 +110,7 @@ Here are a few things I'd like to see in the future in no specific order:
 5. Build & Run a program
     
 
-### Conclusion
+## Conclusion
 
 If you've made it this far, well I thank you for your interest. This project is my way of learning Rust by building complex applications.
 
