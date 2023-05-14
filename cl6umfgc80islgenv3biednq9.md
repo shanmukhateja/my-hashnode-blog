@@ -1,32 +1,42 @@
-## How to setup Dynamic configurations in Angular
+---
+title: "How to setup Dynamic runtime configurations in Angular"
+datePublished: Mon Aug 15 2022 10:36:37 GMT+0000 (Coordinated Universal Time)
+cuid: cl6umfgc80islgenv3biednq9
+slug: how-to-setup-dynamic-runtime-configurations-in-angular
+tags: programming, javascript, angularjs, web-development, dynamic
+
+---
 
 Hello,
 
-In this post, I'll show you how you can adjust your Angular app's features dynamically via a config file. 
+In this post, I'll show you how you can adjust your Angular app's features dynamically **at runtime** using a config file.
 
-I am using using Angular 12 & [runtime-config-loader](https://github.com/pjlamb12/runtime-config-loader) for demo purposes.
+I am using Angular 12 & [runtime-config-loader](https://github.com/pjlamb12/runtime-config-loader) for demo purposes.
 
 > Unlike, `environment.ts`, these changes persist in production builds and are customizable as seen fit in the future.
 
 ## Purpose
 
-1. Show/hide Animal descriptions depending on the config file. 
-
+1. Show/hide Animal descriptions depending on the config file.
+    
 2. Specify a custom font used for displaying the contents.
+    
 
 ## Theory
 
-The idea is, we store the config file in `src/assets` and fetch it on first init. The retrieved data is stored in a service which is how a component would access them.
+The idea is, we store the config file in `src/assets` and fetch it on the first init. The retrieved data is stored in a service which is how a component would access them.
 
 ## Installation
 
-- Install the library into your Angular app.
+* Install the library into your Angular app.
+    
 
 ```sh
 npm install runtime-config-loader
 ```
 
-- Open `app.module.ts` and insert the following line to `imports` section:
+* Open `app.module.ts` and insert the following line into `imports` section:
+    
 
 ```js
 // app.module.ts
@@ -38,7 +48,8 @@ RuntimeConfigLoaderModule.forRoot({
 
 ### Usage
 
-- Here's the `config.json` file used in the demo
+* Here's the `config.json` file used in the demo
+    
 
 ```json
 // src/assets/config.json
@@ -49,7 +60,9 @@ RuntimeConfigLoaderModule.forRoot({
   }
 }
 ```
-- Here's how the HTML looks like:
+
+* Here's what the HTML looks like:
+    
 
 ```html
 <!-- app.component.html -->
@@ -69,7 +82,6 @@ RuntimeConfigLoaderModule.forRoot({
     </div>
 
   </div>
-
 ```
 
 Component TS code:
@@ -105,7 +117,6 @@ export class AppComponent implements OnInit {
   }
 
 }
-
 ```
 
 ### Final Result
@@ -118,11 +129,10 @@ export class AppComponent implements OnInit {
 
 ![ss2.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1660558800823/calmzl0wU.png align="center")
 
-`fontFamily:  "Arial"`
-
+`fontFamily: "Arial"`
 
 ![ss3.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1660558972818/3HxPySp2R.png align="center")
- 
+
 ### Conclusion
 
 I hope you learned something here. Give this article a 👍 and add your thoughts below.
