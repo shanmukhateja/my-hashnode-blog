@@ -1,8 +1,8 @@
 ---
-title: "GhostLLM: How to setup Monaco Editor for QWebEngine"
+title: "GitRaven: How to setup Monaco Editor for QWebEngine"
 datePublished: Mon Nov 03 2025 17:47:16 GMT+0000 (Coordinated Universal Time)
 cuid: cmhjfn1b0000002kz73gohcvu
-slug: ghostllm-how-to-setup-monaco-editor-for-qwebengine
+slug: gitraven-how-to-setup-monaco-editor-for-qwebengine
 tags: cpp, javascript, opensource, editors, git, qt, monacoeditor
 
 ---
@@ -42,8 +42,7 @@ The idea is to instantiate [QWebEngineView](https://doc.qt.io/qt-6/qwebenginevie
     > HTTP server is needed for improving performance of Monaco editor. You can find more info in [FAQ section](https://github.com/microsoft/monaco-editor#faq) of the project.
     
 
-#   
-Implementation
+# Implementation
 
 Let’s start with custom web engine view class.
 
